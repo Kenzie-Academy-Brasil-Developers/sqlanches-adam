@@ -35,8 +35,10 @@ FROM
 
 -- Atualização
 -- 1)
-	-- CHECANDO PONTOS DE LEALDADE DE GEORGIA
-	SELECT
+	UPDATE
+	clientes
+	SET 
+	lealdade = (SELECT
 	  SUM(produtos.pts_de_lealdade)
 	FROM
 	  produtos_pedidos
@@ -44,13 +46,7 @@ FROM
 	  JOIN clientes ON clientes.id = produtos_pedidos.pedido_id
 	  JOIN produtos ON produtos.id = produtos_pedidos.produto_id
 	  WHERE
-	  clientes.nome = 'Georgia';
-	-- RESULTADO : 48
-	-- SETANDO OS NOVOS PONTOS DE GEORGIA
-	UPDATE
-	clientes
-	SET 
-	lealdade = 48
+	  clientes.nome = 'Georgia')
 	WHERE 
 	nome = 'Georgia';
 
