@@ -3,7 +3,7 @@
 
 -- 1)
 SELECT
-  *
+  pedidos.*, produtos.*
 FROM
   produtos_pedidos FULL
   JOIN pedidos ON pedidos.id = produtos_pedidos.pedido_id
